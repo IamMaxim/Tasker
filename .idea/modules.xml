@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tasker.iml" filepath="$PROJECT_DIR$/.idea/modules/Tasker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tasker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Tasker_main.iml" group="Tasker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tasker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Tasker_test.iml" group="Tasker" />
+    </modules>
+  </component>
+</project>
