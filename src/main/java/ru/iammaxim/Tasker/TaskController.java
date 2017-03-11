@@ -1,16 +1,10 @@
 package ru.iammaxim.Tasker;
 
-/**
- * Created by maxim on 20.08.2016.
- */
 public class TaskController {
     private final TaskThread[] threads;
-    private int lastThread = -1;
-    private int maxIndex;
     private int maxTasksSize = 100;
 
     public TaskController(int threadCount) {
-        maxIndex = threadCount-1;
         threads = new TaskThread[threadCount];
 
         for (int i = 0; i < threadCount; i++) {
@@ -21,7 +15,6 @@ public class TaskController {
 
     public TaskController(int threadCount, int taskListSize) {
         this.maxTasksSize = taskListSize;
-        maxIndex = threadCount-1;
         threads = new TaskThread[threadCount];
 
         for (int i = 0; i < threadCount; i++) {
@@ -51,7 +44,14 @@ public class TaskController {
     }
 
     private int getThreadIndex() {
-        if (++lastThread > maxIndex) lastThread = 0;
-        return lastThread;
+        int min_tasks = Integer.MAX_VALUE, index = 0;
+        for (int i = threads.length - 1; i >= 0; i--) {
+            int task_count = threads[i].getTasksCount();
+            if (task_count < min_tasks) {
+                min_tasks = task_count;
+                index = i;
+            }
+        }
+        return index;
     }
 }

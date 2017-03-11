@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by maxim on 20.08.2016.
- */
 public class TaskThread extends Thread {
     public final int index;
-    private final LinkedList<Runnable> toAdd = new LinkedList<Runnable>();
+    private final LinkedList<Runnable> toAdd = new LinkedList<>();
     private int tasksSize = 0;
-    private final List<Runnable> tasks = new ArrayList<Runnable>(tasksSize);
+    private final List<Runnable> tasks;
 
     public int getToAddSize() {
         return toAdd.size();
+    }
+
+    public int getTasksCount() {
+        return toAdd.size() + tasks.size();
     }
 
     public TaskThread(String name, int index) {
@@ -25,6 +26,7 @@ public class TaskThread extends Thread {
         super(name);
         this.index = index;
         tasksSize = maxTasksSize;
+        tasks = new ArrayList<>(tasksSize);
     }
 
     public synchronized void addTask(Runnable task) {
